@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+        <title>Pick N Pay</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/ngstorage/0.3.10/ngStorage.min.js"></script>
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="css/hovermenu.css" rel="stylesheet"/>
+        <script src="js/bootstrap-modal.js"></script>
+        <script src="js/bootstrap-dropdown.js"></script>
+        <script src="js/bootstrap-carousel.js"></script>
+        <script src="js/bootstrap.mini.js"></script>
+        <script src="fonts/jquery-3.2.1.mini.js"></script>
+        
+        <script src="js/angular-route.js"></script>
+        <script src="js/angular.js"></script>
+        <script src="js/angular.mini.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-route.js"></script>
+        <script src="js/AppRouteProvider.js"></script>
+        <script src="js/Controllers.js"></script>
+        
+ </head>
+<body>
+<div class="container">
+    <div class = "row" style="margin-top: 4%">
+        <div class = "col-md-4">
+          <img src="images/LogoPnP.png"  alt="Online Shop"/>
+        </div><!--logo div -->
+    </div>
+<hr/>
+<div class="col-md-6 col-md-offset-3" align="center">
+    <div style="font-size: 25px; font-weight: bold; color: grey"> Register for Pick n Pay online </div>
+    <br/>
+    <div style="color: grey; font-size: 13px">Sign up in seconds to start shopping online, and get groceries and<br/> more delivered to your door.</div>
+    <br/>
+<form ng-submit="register()">
+    <table >
+    <tr>
+       <td width="40%">First Name </td><td width="70%"><input size="25" type="text" id="name" ng-model="customer.name"/></td>
+    </tr>
+       <tr>
+        <td width="40%">Surname </td><td width="70%"><input size="25" type="text" id="surname" ng-model="customer.surname" /></td>
+    </tr>
+    <tr>
+       <td width="40%">Cell Number </td><td width="70%"><input size="25" type="text" id="cell" ng-model="customer.cell"/></td>
+    </tr>
+    <tr>
+       <td width="40%">Address </td><td width="70%"><input size="25" type="text" id="address" ng-model="customer.address"/></td>
+    </tr>
+    <tr>
+       <td width="40%">Email address </td><td width="70%"><input size="25" type="email" id="email" ng-model="customer.email"/></td>
+    </tr>
+    <tr>
+       <td width="40%">Password </td><td width="70%"><input size="25" type="password" id="password" ng-model="customer.password"/></td>
+    </tr>
+    <tr>
+       <td width="40%">Confirm password </td><td width="70%"><input size="25" type="password" id="confirm"/></td>
+    </tr>
+   
+    <tr>
+       <td colspan="2"><input  style="margin-left:70px; margin-top: 20px;" class="btn btn-primary" type="submit" id="register" value="REGISTER" /></td>
+    </tr>
+    </table>
+</form>
+</div>
+</div> <!-- /container --> 
+</body>
+</html>

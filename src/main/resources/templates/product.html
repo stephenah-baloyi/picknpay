@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+       <title>Pick N Pay</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"/>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/ngstorage/0.3.10/ngStorage.min.js"></script>
+       
+        <script src="js/angular-route.js"></script>
+        <script src="js/angular.js"></script>
+        <script src="js/angular.mini.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-route.js"></script>
+        <script src="js/AppRouteProvider.js"></script>
+        <script src="js/Controllers.js"></script>
+    </head>
+    
+<body>
+  <div class="container">
+      
+    <div class = "row" style="margin-top: 4%">
+        <div class = "col-md-4">
+          <img src="images/LogoPnP.png"  alt="Online Shop"/>
+        </div><!--logo div -->
+    </div>
+        
+      <div style ="float:right " ng-controller="adminController">   
+         <div id="header" ng-if="loginName !== null" style="font-size: 16px; color: gray; font-style: italic ; font-weight: bold">
+            Welcome : Admin {{loginName}} 
+               <a ng-click="logoutAdmin('/admin/logoutAdmin')" style="color: maroon; font-weight: bold">logout</a>
+            <br/>         
+        </div> 
+   </div>
+<hr/>
+<br/>
+
+<div class="row" ng-init="listProducts()">
+ <div class="col-lg-offset-2 col-md-8">
+   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addProductModel">Add Product</button>
+<br/>
+<br/>
+<table class="table table-striped table-bordered table-hover" id="dataTables-example" >
+  <div class="alert alert-info">
+    <strong><i class="icon-user icon-large"></i>&nbsp;Product Table</strong>
+  </div>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Product Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Image</th>
+      <!--<th style="width: 90px"></th> -->
+      <th style="width: 90px"></th>
+     </tr>
+   </thead>
+  <tbody> 
+     <tr style="border-color: red;" ng-repeat="product in products">
+     <td>{{product.category}}</td>
+     <td>{{product.productName}}</td>
+     <td>R{{product.price}}</td>     
+     <td>{{product.quantity}}</td>
+     <td>{{product.image}}</td>
+     <!--<td>
+         <button class="btn btn-success" data-toggle="modal" data-target="#updateProductModel">Update</button>
+     </td>-->
+     <td>
+         <button class="btn btn-danger" ng-click="deleteProduct(product.id)" onclick="return confirm('Are you sure?')">Delete</button>
+     </td>
+     </tr> 
+  </tbody>
+     
+</table>  
+
+</div>
+</div>
+<br/>
+
+ <!-- Modal -->
+ <div class="modal fade" id="addProductModel" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" >
+       <form ng-submit="addProduct() ">
+   
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" >&times;</button>
+          <h4 class="modal-title">Product</h4>
+        </div><!-- modal header -->
+        <div class="modal-body">
+          
+            <div class="control-group">
+            <label for="category" class="form-control-label">Product Category: </label> 
+            <select class = "form-control" name="category" id="category" ng-model="product.category">
+            <option>Product Category</option>
+            <option>Bakery</option>
+            <option>Beverages</option>
+            <option>Butchery</option>
+            <option>Baby</option>
+            <option>Dry Groceries</option>
+            <option>Fresh Foods</option>
+            <option>Frozen Foods</option>
+            <option>Fruits &amp; Vegetables</option>
+            </select>
+            </div>
+            <div class="control-group">
+            <label for="productName" class="form-control-label">Product Name:</label>
+            <input type="text" class="form-control" id="productName" placeholder="Product Name" ng-model="product.productName"/>
+            </div>
+              
+            <div class="control-group">
+            <label for="price" class="form-control-label">Product Price:</label>
+            <input type="text" class="form-control" id="price" placeholder="Price: R" ng-model="product.price"/>
+            </div>
+             
+            <div class="control-group">
+            <label for="quantity" class="form-control-label">Product Quantity:</label>
+            <input type="number" class="form-control" id="quantity" placeholder="Quantity" ng-model="product.quantity"/>
+            </div>
+              
+              <div class="control-group">
+                  <label class="control-label" for="image">Image:</label>
+                   <div class="controls">
+                     <input type="file" name="image" id="image" ng-model="product.image"/> 	
+                    </div>
+              </div>
+            
+        </div><!-- modal body -->
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Add Product" />
+          <button type="button" class="btn btn-default" ng-click="listProducts()" data-dismiss="modal">Close</button>
+        </div><!-- footer -->
+       </form><!-- form -->
+      </div><!-- modal content -->
+      
+    </div><!-- modal dialog -->
+  </div><!-- modal -->
+  
+
+  
+   <!-- Modal Update-->
+ <div class="modal fade" id="updateProductModel" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" >
+       <form >
+   
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" >&times;</button>
+          <h4 class="modal-title">Product</h4>
+        </div><!-- modal header -->
+        <div class="modal-body">
+          
+            <div class="control-group">
+            <label for="category" class="form-control-label">Product Category: </label> 
+            <select class = "form-control" name="category"  ng-model="prod.category">
+            <option>Product Category</option>
+            <option>Bakery</option>
+            <option>Beverages</option>
+            <option>Butchery</option>
+            <option>Baby</option>
+            <option>Dry Groceries</option>
+            <option>Fresh Foods</option>
+            <option>Frozen Foods</option>
+            <option>Fruits &amp; Vegetables</option>
+            </select>
+            </div>
+            <div class="control-group">
+            <label for="productName" class="form-control-label">Product Name:</label>
+            <input type="text" class="form-control"  placeholder="Product Name" ng-model="prod.productName"/>
+            </div>
+              
+            <div class="control-group">
+            <label for="price" class="form-control-label">Product Price:</label>
+            <input type="text" class="form-control" placeholder="Price: R" ng-model="prod.price"/>
+            </div>
+             
+            <div class="control-group">
+            <label for="quantity" class="form-control-label">Product Quantity:</label>
+            <input type="number" class="form-control" placeholder="Quantity" ng-model="prod.quantity"/>
+            </div>
+              
+              <div class="control-group">
+                  <label class="control-label" for="image">Image:</label>
+                   <div class="controls">
+                     <input type="file" name="image" ng-model="prod.image"/> 	
+                    </div>
+              </div>
+            
+        </div><!-- modal body -->
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-primary" ng-click="updateProduct()" value="Update Product" />
+          <button type="button" class="btn btn-default" ng-click="listProducts()" data-dismiss="modal">Close</button>
+        </div><!-- footer -->
+       </form><!-- form -->
+      </div><!-- modal content -->
+      
+    </div><!-- modal dialog -->
+  </div><!-- modal -->
+  
+  
+</div><!-- container -->
+        
+</body>
+</html>

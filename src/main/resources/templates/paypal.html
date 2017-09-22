@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    </head>
+<body>
+    
+<h4>Welcome, Guest</h4>
+ 
+<div class="product">            
+       
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" ng-repeat="product in carts">
+    
+    <input type="hidden" name="cmd" value="_cart"/>
+    <input type="hidden" name="upload" value="1"/>
+   <input type="hidden" name="business" value="stephenah.baloyi-facilitator@gmail.com"/>
+
+    <input type="hidden" name="item_name" value="{{product.productName}}"/>
+    <input type="hidden" name="amount" value="{{product.price}}"/>
+    <input type="hidden" name="quantity" value="{{product.quantity}}"/>
+    
+    <input type="hidden" name="userid" value="1"/>
+    <input type="hidden" name="cpp_header_image" value="http://www.phpgang.com/wp-content/uploads/gang.jpg"/>
+    <input type="hidden" name="no_shipping" value="1"/>
+    <input type="hidden" name="currency_code" value="USD"/>
+    <input type="hidden" name="handling" value="0"/>
+    <input type="hidden" name="cancel_return" value="http://demo.phpgang.com/payment_with_paypal/cancel.php"/>
+    <input type="hidden" name="return" value="http://demo.phpgang.com/payment_with_paypal/success.php"/>
+    <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"/>
+</form> 
+</div>
+</body>
+
+</html>

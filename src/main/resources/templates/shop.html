@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Pick N Pay</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/ngstorage/0.3.10/ngStorage.min.js"></script>
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="css/hovermenu.css" rel="stylesheet"/>
+        <script src="js/bootstrap-modal.js"></script>
+        <script src="js/bootstrap-dropdown.js"></script>
+        <script src="js/bootstrap-carousel.js"></script>
+        <script src="js/bootstrap.mini.js"></script>
+        <script src="fonts/jquery-3.2.1.mini.js"></script>
+        
+        <script src="js/angular-route.js"></script>
+        <script src="js/angular.js"></script>
+        <script src="js/angular.mini.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-route.js"></script>
+        <script src="js/AppRouteProvider.js"></script>
+        <script src="js/Controllers.js"></script>
+        
+ </head>
+  <body >
+    <div class = "container">
+        <!-- -->
+     <div class = "row">
+        <div class = "col-md-4">
+          <img src="images/onlinelogo.png" width="314" height="160" alt="Online Shop"/>
+        </div><!--logo div -->
+         
+        <div class = "col-md-4">
+         <div class = "input-group" style="margin-top: 17%">
+            <input type="text" name="search" value="" size="200" class ="form-control" 
+                           placeholder ="Search by keyword/product/brand" />
+            <div class = "input-group-btn">
+               <button class="btn btn-default" type="submit" >
+                <i class ="glyphicon glyphicon-search"></i>
+               </button>
+                         
+            </div>
+        </div>
+        </div><!--search div -->
+            
+        <div class = "col-md-4" ng-controller="loginController" >
+        <div style ="margin-top: 20%; float:right ">   
+         <div id="header" ng-if="loginStatus !== null" style="font-size: 16px; color: gray; font-style: italic ; font-weight: bold">
+            Welcome {{ loginStatus}} 
+                         
+                        <select name="myPnp" style=" font-style: normal; border: none; width: 80px;color: white; font-size: 12px ; background-color: maroon" >
+                        <option>MY PNP </option>
+                        <option>My List</option>
+                        <option>My Trolley</option>
+                        <option>Personal Details</option>
+                        <option>Delivery Details</option>
+                        </select>
+                         
+                         <a ng-click="logout()" style="color: maroon; font-weight: bold">logout</a>
+                         <br/>
+                         
+        </div>
+            <div ng-if="loginStatus === null ">
+            Hi!  Please <a ng-click="goto('/login')" style="color: #a70240; font-weight: bold">log in</a> or 
+            <a ng-click="goto('/register')" style="color: #a70240; font-weight: bold" >register</a>
+            <select name="myPnp" style="font-weight: bold; border: none; width: 80px" >
+            <option>MY PNP </option>
+            <option>My List</option>
+            <option>My Trolley</option>
+            <option>Personal Details</option>
+            <option>Delivery Details</option>
+            </select>
+        </div > <!--if user not logged in div -->
+       </div>
+        </div>
+ </div> 
+         <!-- -->
+   <div class="row" >
+          <div class="btn-group btn-group-justified" style="height: 70px; font-stretch: normal">
+                    <a href="#" class="btn btn-primary" style="white-space: normal; width: 0.5%; background-color: #004579"><img src="images/shop.png" height="50" alt="Online Shop"/></a>
+                    <a href="#" class="btn btn-primary" style="white-space: normal; width: 1.2%; background-color: #004579">PROMOTIONS</a>
+                    <a href="#" class="btn btn-primary" style="white-space: normal; background-color: #004579">SMART SHOPPER</a>
+                    <a href="#" class="btn btn-primary" style="white-space: normal;background-color: #004579">RECIPES</a>
+                    <a href="#" class="btn btn-primary" style="white-space: normal;background-color: #004579">STORE LOCATOR</a>
+                    <a href="#" class="btn btn-primary" style="white-space: normal;background-color: #004579;width: 1.2%;">IN-STORE CATALOGUES</a>
+                    <a href="#" class="btn btn-primary" style="white-space: normal;background-color: #004579">VITALITY</a>
+                    <a href="#" class="btn btn-primary" style="white-space: normal; width: 1.2%;background-color: #004579">COMPETITIONS</a>
+                    <a href="#" class="btn btn-primary" style="white-space: normal;background-color: #004579">EVENTS</a>
+                    <a href="#" class="btn btn-primary" style="white-space: normal;background-color: #004579">CLOTHING</a>
+                    <a href="#" class="btn btn-primary" style="white-space: normal;background-color: #004579">BIRTHDAY</a>
+          </div>
+  </div>
+         <!-- -->
+    <div class="dropdown" style="margin-top: 10px; margin-left: -10px">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">GROCERIES</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">HOUSEHOLD<br/>CLEANING</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">BABY</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">HEALTH &amp;<br/> BEAUTY</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">HOME &amp;<br/> GARDEN</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">PET<br/> SHOP</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+         
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">SPORTS &amp;<br/> LEISURE</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">TECHNOLOGY</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">STATIONARY</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">TOYS</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold; border-right: #000;">WINES &amp;<br/> LIQUOR</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="dropdown" style="margin-top: 10px;">
+        <button class="dropbtn" style="font-weight: bold;border-right: #000;">LARGE <br/>APPLIANCES</button>
+        <div class="dropdown-content">
+            <a href="#"></a>
+        </div>
+    </div>
+         
+<div class="row" style="margin-top: 20px;">
+    
+  <div class="col-md-9" >
+   <div class="col-md-12">
+   <div id="myCarousel" class="carousel slide" data-ride="carousel">
+   <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+              
+    </ol>
+                        
+   <div class="carousel-inner">
+   <div class="item active" >
+                              
+    <img src="images/pnpbanner.jpg"  alt="BirthDay-Banner"/>
+    </div>
+   <div class="item" >
+                              
+    <img src="images/pnpHB.jpg" alt="BirthDay-Banner"/>
+    </div>
+   </div>
+   </div>
+</div>
+  </div>
+    <!-- end of col-md-9 1-->
+<div class="row" ng-controller="productController">
+    
+<div class="col-md-3" style="background: #004579; color: white">
+   <form ng-submit="">
+    <label style="font-weight: bold; font-size: 20px;">MY TROLLEY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;({{itemCount}})</label> <br></br>
+     <label style="font-weight: bold; font-size: 20px">- - - - - - - - - - - - - - - - - - - - - -</label><br/>
+                    
+      <table class="table" ng-init="listCarts()">
+      <thead></thead>
+      <tbody style=" cellpadding:0; cellspacing:0; border:0;">
+        <tr ng-repeat="product in cart" style=" cellpadding:0; cellspacing:0; border:0;">
+         <td style=" cellpadding:0; cellspacing:0; border:0;">
+             <input type="hidden" ng-model="prodId" name="id" value="{{product.id}}" />
+             <div class="col-md-3" style="margin-left: -20px">
+                 <label ng-model="prodName">{{product.productName}}</label>  <!--<label style="float: right"> {{.quantity}}</label>-->
+          </div>
+            <div class="col-md-5">
+          <label ng-model="prodPrice"> R {{product.price}}</label>
+          </div>
+          <div class="col-md-3">
+              <label>{{product.quantity}}</label>
+            </div>
+           <!-- <input type="button" style="float: right; font-weight: bold; color: black; width: 5px;height: 25px"
+                                           value="-" class="btn btn-danger" ng-click="removeQ(v.productId,v.quantity)" />  <br/>-->
+            
+         </td>
+                                
+        </tr >
+         
+        <tr > <td style=" cellpadding:0; cellspacing:0; border:0;"><label> Sub Total   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R {{subtotal}} </label> <br/></td></tr>
+         <tr><td style=" cellpadding:0; cellspacing:0; border:0;"><label> Delivery   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  R 0.00  </label> <br/></td></tr>   
+        <tr><td style=" cellpadding:0; cellspacing:0; border:0;"><label> Savings   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  R 0.00  </label> <br/></td></tr>
+       <tr><td style=" cellpadding:0; cellspacing:0; border:0;"><label style="font-weight: bold; font-size: 20px">- - - - - - - - - - - - - - - - - - - - -</label><br/></td></tr>
+       <tr><td style=" cellpadding:0; cellspacing:0; border:0;"> <label> TOTAL   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  R {{total}} </label></td></tr>
+       <tr><td style=" cellpadding:0; cellspacing:0; border:0;"> <label style="font-weight: bold; font-size: 20px">- - - - - - - - - - - - - - - - - - - - -</label><br/></td></tr>
+      
+      </tbody>
+                         
+     </table>
+     <button class="btn btn-danger" type="submit" ng-click="goto('/checkout')">Check Out</button>
+    <br/>
+    <br/>
+   </form>
+</div>
+     
+</div><!-- end of row-->             
+</div><!-- end of cm9-->
+ <br/>
+
+<!-- ended -->
+<div class="row" >
+                 
+<div class="col-md-9" ng-controller="productController" ng-init="displayProduct()">  
+<table class="table table-striped table-bordered table-hover"  id="dataTables-example" >
+<div class="alert alert-info" style="background-color: #c7254e; color: white;width: 100%;;">
+    <strong><i class="icon-user icon-large"></i>&nbsp;Prices for online orders only. Please <a ng-click="goto('/login')">log in</a> to see prices and products specific to your region.</strong>
+</div>
+<thead></thead>
+ <tbody >
+  <tr >
+   <td style=" border-color: red;" ng-repeat=" prod in displays" >
+    <input type="hidden" name="id" value="{{prod.id}}" />	
+     <img ng-src="images/formulaNan.jpg" style="width: 50%; height: 20%; margin-left: 30px;" alt="1"/><br/>
+     <p style="font-size: 10px;">{{prod.productName}}</p>
+       -------------------------
+       <div style="font-size: 20px; font-weight: bold; color: red">R {{prod.price}}</div> 
+       --------------------------
+       <div class="col-md-6">
+           <input type="number" class="form-control" ng-model="txtQty" name="txtQty" style="width:60px; height:35px; margin-left: -20px" onkeypress="onlynum(event)" required=""/>
+       </div>
+       <div class="col-md-3">
+         <button class="btn btn-primary" ng-click="addToCart(prod.id,prod.productName,prod.price,txtQty)" style="font-weight: bold;">ADD</button>
+       </div>
+   </td>                                
+  </tr> 
+</tbody>
+</table>
+</div>
+
+                    
+<div class="col-md-3" style="background: #004579; color: white;">
+<br/>
+<div style="color: white; font-weight: bold; font-size: 20px">
+ DELIVERY
+ </div>
+ Do we deliver to your area?
+  <p style="color: pink;">------------------------------------------------------</p>
+     <select name="city" style="width: 200px; height: 30px; border: #c7254e;color: #990033">
+        <option>Please select city</option>
+        <option></option>
+        </select>
+       <br/>
+        <br/>
+       <select name="surbub" style="width: 200px; height: 30px;border: #c7254e; color: #990033">
+        <option>Suburb</option>
+         <option></option>
+        </select>
+        <br/>
+        <p style="color: pink;"> ------------------------------------------------------</p>
+       <button class="btn btn-danger" style="width: 200px; height: 30px; background: #990033;font-weight: bold;">SUGGEST YOUR SUBURB</button>
+       <br/><br/>
+       </div>
+   </div> 
+<br/>
+<!-- -->
+</div>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+        <title>Pick N Pay</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/ngstorage/0.3.10/ngStorage.min.js"></script>
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="css/hovermenu.css" rel="stylesheet"/>
+        <script src="js/bootstrap-modal.js"></script>
+        <script src="js/bootstrap-dropdown.js"></script>
+        <script src="js/bootstrap-carousel.js"></script>
+        <script src="js/bootstrap.mini.js"></script>
+        <script src="fonts/jquery-3.2.1.mini.js"></script>
+        
+        <script src="js/angular-route.js"></script>
+        <script src="js/angular.js"></script>
+        <script src="js/angular.mini.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-route.js"></script>
+        <script src="js/AppRouteProvider.js"></script>
+        <script src="js/Controllers.js"></script>
+        
+ </head>
+    <body>
+        <div class="container" ng-controller="homeController">
+    <div class = "row" style="margin-top: 4%">
+        <div class = "col-md-4">
+          <img src="images/LogoPnP.png"  alt="Online Shop"/>
+        </div><!--logo div -->
+    </div>
+<hr/>
+<br/>
+<br/>
+
+<div ng-init="checkout()"></div>
+
+<div class="col-md-6 col-md-offset-3" align="center">
+    <div style="font-size: 25px; font-weight: bold; color: grey"> <div>You Have Successfully Payed for your order,<a ng-click="goto('/')">Go Back to Shop</a></div></div>
+<br/>
+</div>
+</div> <!-- /container --> 
+        
+        
+    </body>
+</html>

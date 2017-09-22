@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8" /> 
+    <title>
+      Admin
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ngstorage/0.3.10/ngStorage.min.js"></script>
+    
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular.mini.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/AppRouteProvider.js"></script>
+    <script src="js/Controllers.js"></script>
+    
+</head>
+<body ng-controller="productController">
+
+    <form  ng-submit="adminLogin()">
+  <h1>Administrator Log in</h1>
+  <div class="inset">
+  <p>
+    <label for="email">USERNAME</label>
+    <input style = "color:white;" type="email" ng-model="admin.email" name="username"/>
+  </p>
+  <p>
+    <label for="password">PASSWORD</label>
+    <input style = "color:white;" type="password" ng-model="admin.password" name="password"/>
+  </p>
+
+  </div>
+   <center><p class="p-container" >
+  
+    <input type="submit" name="go" id="go" value="Log in"/>
+	
+  </p>
+  </center>
+</form>
+</body>
+</html>
