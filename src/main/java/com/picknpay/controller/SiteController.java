@@ -25,7 +25,7 @@ public class SiteController {
     @RequestMapping("/{page}")
     public String getView(@PathVariable("page") String page){
        
-        System.out.println(page);
+        //System.out.println(page);
         
         return page;
     }

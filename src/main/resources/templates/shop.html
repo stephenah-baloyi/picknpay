@@ -202,7 +202,7 @@ and open the template in the editor.
 </div>
   </div>
     <!-- end of col-md-9 1-->
-<div class="row" ng-controller="productController">
+<div class="row">
     
 <div class="col-md-3" style="background: #004579; color: white">
    <form ng-submit="">
@@ -254,7 +254,7 @@ and open the template in the editor.
 <!-- ended -->
 <div class="row" >
                  
-<div class="col-md-9" ng-controller="productController" ng-init="displayProduct()">  
+<div class="col-md-9" ng-init="displayProduct()">  
 <table class="table table-striped table-bordered table-hover"  id="dataTables-example" >
 <div class="alert alert-info" style="background-color: #c7254e; color: white;width: 100%;;">
     <strong><i class="icon-user icon-large"></i>&nbsp;Prices for online orders only. Please <a ng-click="goto('/login')">log in</a> to see prices and products specific to your region.</strong>
@@ -264,7 +264,7 @@ and open the template in the editor.
   <tr >
    <td style=" border-color: red;" ng-repeat=" prod in displays" >
     <input type="hidden" name="id" value="{{prod.id}}" />	
-     <img ng-src="images/formulaNan.jpg" style="width: 50%; height: 20%; margin-left: 30px;" alt="1"/><br/>
+     <img ng-src="{{prod.image}}" style="width: 30%; height: 30%; margin-left: 30px;" alt="1"/><br/>
      <p style="font-size: 10px;">{{prod.productName}}</p>
        -------------------------
        <div style="font-size: 20px; font-weight: bold; color: red">R {{prod.price}}</div> 

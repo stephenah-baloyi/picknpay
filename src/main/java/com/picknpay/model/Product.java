@@ -25,12 +25,12 @@ public class Product implements Serializable {
     private String productName;
     private double price;	
     private int quantity;
-    private byte[] image;
+    private String image;
 
     public Product() {
     }
 
-    public Product(String category, String productName, double price, int quantity, byte[] image) {
+    public Product(String category, String productName, double price, int quantity, String image) {
         this.category = category;
         this.productName = productName;
         this.price = price;
@@ -79,11 +79,11 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

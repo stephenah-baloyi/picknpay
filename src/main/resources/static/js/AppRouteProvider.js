@@ -59,14 +59,13 @@ RhulaniApp.controller("homeController",function($rootScope,$scope,$http,$locatio
     $rootScope.checkoutItems = localStorage.getItem("checkoutItems");
     $rootScope.sessionId =  sessionStorage.getItem("sessionId");
     
-        
-     $rootScope.goto = function(url){
+    $rootScope.goto = function(url){
         $location.path(url);
     };
        
     $rootScope.displayProduct = function(){        
     
-       $http.post("/admin/display",$scope.product).then(function(response){
+       $http.post("/admin/display").then(function(response){
            
        $rootScope.displays = response.data;
  });
@@ -221,22 +220,55 @@ $rootScope.logEmployee = sessionStorage.getItem("loggedEmp");
 $rootScope.logEmpId = sessionStorage.getItem("logEmpId");
 $rootScope.loginName = sessionStorage.getItem("loginName");
 $rootScope.sessionAdmin =  sessionStorage.getItem("sessionAdmin");
+
+$http.defaults.headers.post["Content-Type"] = "application/json";
+$scope.image= null;					
+var imageCopy = null;
+var image = null;
+var handleImageSelect = function(evt)
+{
+var files = evt.target.files;
+var file = files[0];
+
+    if (files && file) {
+    var reader = new FileReader();
+    reader.onload = function(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    imageCopy = btoa(binaryString);
+    image = 'data:image/octet-stream;base64,'+ imageCopy;    
+    $scope.image=image;
+    console.log($scope.image);
+    };
+    reader.readAsBinaryString(file);	
+    }
+};
+if(window.File && window.FileReader && window.FileList && window.Blob){
+    document.getElementById('filePickerImage').addEventListener('change', handleImageSelect, false);
+  }else {
+        alert('The File APIs are not fully supported in this browser.');
+  }
+  
+$scope.addProduct = function(){
     
-$scope.addProduct = function(){        
-       $http.post("/admin/product",$scope.product).then(function(response){
-            
-           alert(response.data.message);
+    $http.post("/admin/product",{
+    productName: $scope.productName,
+    price: $scope.price,								 
+    quantity: $scope.quantity,								   
+    category: $scope.category,
+    image:  $scope.image
+								   
+}).then(function(response) {
+   alert(response.data.message);
            
            if(response.data.status === "OK"){
              alert(response.data.prod.productName + " has been added" );
-             $scope.prodId = response.data.prod.Id;
+             $rootScope.goto("/admin/products");
              $scope.listProducts();
-             
-             
-           }
-           
-        });
-  };
+         }
+						
+    });
+
+ };
  
  $scope.listCarts = function(){        
 
